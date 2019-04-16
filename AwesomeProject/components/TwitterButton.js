@@ -39,10 +39,6 @@ export default class TwitterButton extends Component {
             )
     }
 
-    combinedFunc = () => {
-        this._twitterSignIn();
-        this.props.navigation.navigate('Home')
-    }
 
     // handleLogout = () => {
     //     console.log("logout")
@@ -53,17 +49,17 @@ export default class TwitterButton extends Component {
     // }
 
     render() {
-        //const { isLoggedIn } = this.state
+        const { isLoggedIn } = this.state
         return (
             <View style={this.props.style}>
-                {/*{isLoggedIn*/}
-                {/*    ? <TouchableOpacity onPress={this.handleLogout}>*/}
-                {/*        <Text>Log out</Text>*/}
-                {/*    </TouchableOpacity>*/}
-                {/*    : <Button name="logo-twitter" style={styles.button} onPress={this._twitterSignIn} title="Login with Twitter">*/}
-                {/*    </Button>*/}
-                {/*}*/}
-                <Button name="logo-twitter" style={styles.button} onPress={this.combinedFunc()} title="Login with Twitter">
+                {isLoggedIn
+                    ? <TouchableOpacity onPress={this.handleLogout}>
+                        <Text>Log out</Text>
+                    </TouchableOpacity>
+                    : <Button name="logo-twitter" style={styles.button} onPress={this._twitterSignIn} title="Login with Twitter">
+                    </Button>
+                }
+                <Button name="logo-twitter" style={styles.button} onPress={this._twitterSignIn} title="Login with Twitter">
                 </Button>
             </View>
         )
