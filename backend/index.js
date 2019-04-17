@@ -101,20 +101,24 @@ For tweet analysis
 const language  = require('@google-cloud/language')
 const client = new language.LanguageServiceClient({
     projectId: 'twitter-bullying',
-    keyFilename: 'C:\\Users\\Dunni Adenuga\\Desktop\\twitter-bullying-report\\backend\\Twitter-Bullying-f40dcb56aa93.json'
+    keyFilename: './Twitter-Bullying-f40dcb56aa93.json'
 });
 
 app.get('/getTweetAnalysis', async (req, res) => {
     //return analysis
+    //const text = req.body.tweet
+    console.log('postB' + JSON.stringify(req.body))
+    console.log(req.body.tweet)
     const text = req.body.tweet
     const document = {
         content: text,
         type: 'PLAIN_TEXT'
     }
-
+    console.log("I'm here")
     // Detects the sentiment of the text
     const [result] = await client.analyzeSentiment({document: document});
     const sentiment = result.documentSentiment;
+
 
     console.log(`Text: ${text}`);
     console.log(`Sentiment score: ${sentiment.score}`);
@@ -122,7 +126,8 @@ app.get('/getTweetAnalysis', async (req, res) => {
 
     res.json({
         result:'success',
-        message: sentiment
+        message: sentiment,
+
     })
 
 })
