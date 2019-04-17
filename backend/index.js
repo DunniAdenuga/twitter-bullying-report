@@ -1,14 +1,14 @@
-import express from 'express'
-import bodyParser from 'body-parser'
+const express = require('express')
+const bodyParser = require('body-parser')
 // import querystring from 'querystring'
 
 const app = express()
 
 //db connection
-import mongoose from 'mongoose'
-import fs from 'fs'
-const config = JSON.parse(fs.readFileSync('config.json', 'UTF-8'))
-mongoose.connect(config.db_url)
+const mongoose = require('mongoose')
+const fs = require('fs')
+const config2 = JSON.parse(fs.readFileSync('config.json', 'UTF-8'))
+mongoose.connect(config2.db_url)
 let db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -63,8 +63,8 @@ function tweetParser(req, res, next){
 
 // bind middleware to the application
 // for GET, DELETE, and POST
-app.get('/:tweetDetails', tweetParser)
-app.delete('/:tweetDetails', tweetParser)
+app.get('/', tweetParser)
+app.delete('/', tweetParser)
 app.post('/', tweetParser)
 
 
@@ -92,8 +92,17 @@ app.get('/getTweet/:reporter', (req, res) => {
 /*
 For tweet analysis
  */
+
+// const config = {
+//     projectId: 'twitter-bullying',
+//     GOOGLE_APPLICATION_CREDENTIALS : 'C:\\Users\\Dunni Adenuga\\Downloads\\Twitter-Bullying-f40dcb56aa93.json'
+// };
+
 const language  = require('@google-cloud/language')
-const client = new language.LanguageServiceClient();
+const client = new language.LanguageServiceClient({
+    projectId: 'twitter-bullying',
+    keyFilename: 'C:\\Users\\Dunni Adenuga\\Desktop\\twitter-bullying-report\\backend\\Twitter-Bullying-f40dcb56aa93.json'
+});
 
 app.get('/getTweetAnalysis', async (req, res) => {
     //return analysis
