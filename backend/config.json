@@ -1,3 +1,3 @@
 {
-  "aws_dburl": "mongodb+srv://ia005:sine3045@cluster0-6sz7d.mongodb.net/test?retryWrites=true"
+  "db_url": "mongodb+srv://ia005:sine3045@cluster0-6sz7d.mongodb.net/test?retryWrites=true"
 }

@@ -1,5 +1,3 @@
-const AWS = true;
-
 import express from 'express'
 import bodyParser from 'body-parser'
 // import querystring from 'querystring'
@@ -10,7 +8,7 @@ const app = express()
 import mongoose from 'mongoose'
 import fs from 'fs'
 const config = JSON.parse(fs.readFileSync('config.json', 'UTF-8'))
-mongoose.connect(AWS ? config.aws_dburl : config.local_dburl)
+mongoose.connect(config.db_url)
 let db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -91,8 +89,33 @@ app.get('/getTweet/:reporter', (req, res) => {
     })
 })
 
-app.get('/getTweetAnalysis', (req, res) => {
+/*
+For tweet analysis
+ */
+const language  = require('@google-cloud/language')
+const client = new language.LanguageServiceClient();
+
+app.get('/getTweetAnalysis', async (req, res) => {
     //return analysis
+    const text = req.body.tweet
+    const document = {
+        content: text,
+        type: 'PLAIN_TEXT'
+    }
+
+    // Detects the sentiment of the text
+    const [result] = await client.analyzeSentiment({document: document});
+    const sentiment = result.documentSentiment;
+
+    console.log(`Text: ${text}`);
+    console.log(`Sentiment score: ${sentiment.score}`);
+    console.log(`Sentiment magnitude: ${sentiment.magnitude}`);
+
+    res.json({
+        result:'success',
+        message: sentiment
+    })
+
 })
 
 
