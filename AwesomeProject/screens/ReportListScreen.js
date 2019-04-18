@@ -9,6 +9,16 @@ export default class ReportListScreen extends Component {
        data : {} // should come from backend
     }
 
+    componentWillMount() {
+        return fetch('https://localhost:3000/')
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({
+                    data: responseJson.message
+                })
+            })
+    }
+
     render() {
 
         //JSON.stringify(itemId)
@@ -18,23 +28,21 @@ export default class ReportListScreen extends Component {
             <View style={styles.container}>
 
                 <FlatList
-                    data={[
-                        {key: 'Tweet 1'},
-                        {key: 'Tweet 2'},
-                        {key: 'Tweet 3'},
-                    ]}
+                    data={this.state.data}
                     renderItem={({item}) =>
                         <TouchableOpacity
                             style={styles.item}
                             onPress={() => {
                                 this.props.navigation.navigate('ReportAnalysis', {
-                                    itemId: 86,
-                                    otherParam: 'anything you want here',
+                                    tweet: item.tweet,
+                                    author: item.author,
+                                    reporter: item.reporter
                                 });
                             }}>
-                        <Text >{item.key}</Text>
+                        <Text >{item.tweet}</Text>
                     </TouchableOpacity>
                     }
+                    keyExtractor={item => item.tweet}
                     />
                 <Button  style={styles.button}
                          onPress= {() => {

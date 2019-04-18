@@ -11,15 +11,30 @@ export default class NewReportScreenScreen extends Component {
         reporter: "",
         tweet: ""
     }
+
+    sendTweet(){
+        fetch('https://localhost:3000/createTweet',{
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                author: this.state.author,
+                reporter: this.state.reporter,
+                tweet: this.state.tweet
+            })
+        });
+    }
+
     render() {
         const { navigation } = this.props;
-        const itemId = navigation.getParam('itemId', 'NO-ID');
-        const otherParam = navigation.getParam('otherParam', 'some default value');
+        const reporterName = navigation.getParam('reporter', 'no-name');
         //JSON.stringify(itemId)
         return (
             <View style={this.props.style}>
                 <Text>Reporter: </Text>
-                <Text>{this.state.reporter}</Text>
+                <Text>{reporterName}</Text>
 
                 <Text> Author: </Text>
                 <TextInput
@@ -40,10 +55,8 @@ export default class NewReportScreenScreen extends Component {
 
                 <Button  style={styles.button}
                          onPress= {() => {
-                             this.props.navigation.navigate('ReportList', {
-                                 itemId: 86,
-                                 otherParam: 'anything you want here',
-                             });
+                             this.sendTweet();
+                             this.props.navigation.navigate('ReportList');
                          }}
                          title="Submit">
                 </Button>

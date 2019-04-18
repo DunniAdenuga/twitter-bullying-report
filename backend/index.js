@@ -63,7 +63,7 @@ function tweetParser(req, res, next){
 
 // bind middleware to the application
 // for GET, DELETE, and POST
-app.get('/', tweetParser)
+//app.get('/', tweetParser)
 app.delete('/', tweetParser)
 app.post('/', tweetParser)
 

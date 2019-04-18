@@ -9,6 +9,16 @@ export default class ReportAnalysisScreen extends Component {
         result : "result from backend" // should come from backend
     }
 
+    componentWillMount() {
+        return fetch('https://localhost:3000/getTweetAnalysis')
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({
+                    data: responseJson.message
+                })
+            })
+    }
+
     render() {
 
         //JSON.stringify(itemId)

@@ -27,6 +27,7 @@ export default class HomeScreen extends Component {
                              this.props.navigation.navigate('ReportList', {
                                  itemId: 86,
                                  otherParam: 'anything you want here',
+                                 twitter_user:
                              });
                          }}
                          title="See Previous Reports">
