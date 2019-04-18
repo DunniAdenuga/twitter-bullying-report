@@ -26,6 +26,7 @@ export default class LoginScreen extends Component {
                     this.props.navigation.navigate('Home', {
                         itemId: 86,
                         otherParam: 'anything you want here',
+                        loginDatum: loginData
                     })
                 }
             })

@@ -10,7 +10,7 @@ export default class ReportListScreen extends Component {
     }
 
     componentWillMount() {
-        return fetch('https://localhost:3000/')
+        return fetch('http://10.0.2.2:3000/')
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({
@@ -20,12 +20,12 @@ export default class ReportListScreen extends Component {
     }
 
     render() {
-
-        //JSON.stringify(itemId)
-        //add header
+        const { navigation } = this.props;
+        const reporterName = navigation.getParam('twitter_user', 'no-name');
 
         return (
             <View style={styles.container}>
+                <Text>Hello {reporterName}</Text>
 
                 <FlatList
                     data={this.state.data}

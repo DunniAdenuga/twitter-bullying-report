@@ -8,12 +8,11 @@ export default class NewReportScreenScreen extends Component {
 
     state = {
         author: "",
-        reporter: "",
         tweet: ""
     }
 
-    sendTweet(){
-        fetch('https://localhost:3000/createTweet',{
+    sendTweet(reporterName){
+        fetch('http://10.0.2.2:3000/createTweet',{
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -21,15 +20,21 @@ export default class NewReportScreenScreen extends Component {
             },
             body: JSON.stringify({
                 author: this.state.author,
-                reporter: this.state.reporter,
+                reporter: reporterName,
                 tweet: this.state.tweet
             })
+        })
+        .catch((error) =>{
+            console.error(error);
         });
+        this.props.navigation.navigate('ReportList');
+
+
     }
 
     render() {
         const { navigation } = this.props;
-        const reporterName = navigation.getParam('reporter', 'no-name');
+        const reporterName = navigation.getParam('twitter_user', 'no-name');
         //JSON.stringify(itemId)
         return (
             <View style={this.props.style}>
@@ -55,8 +60,7 @@ export default class NewReportScreenScreen extends Component {
 
                 <Button  style={styles.button}
                          onPress= {() => {
-                             this.sendTweet();
-                             this.props.navigation.navigate('ReportList');
+                             this.sendTweet(reporterName);
                          }}
                          title="Submit">
                 </Button>

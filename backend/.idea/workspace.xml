@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="86e91776-4a6c-4e47-9a9d-8d5c4ea3f584" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../AwesomeProject/screens/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../AwesomeProject/screens/HomeScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AwesomeProject/screens/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../AwesomeProject/screens/LoginScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../AwesomeProject/screens/NewReportScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../AwesomeProject/screens/NewReportScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../AwesomeProject/screens/ReportAnalysisScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../AwesomeProject/screens/ReportAnalysisScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../AwesomeProject/screens/ReportListScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../AwesomeProject/screens/ReportListScreen.js" afterDir="false" />
@@ -40,8 +41,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-663">
-              <caret line="65" column="2" selection-start-line="65" selection-start-column="2" selection-end-line="65" selection-end-column="2" />
+            <state relative-caret-position="26">
+              <caret line="106" column="8" selection-start-line="106" selection-start-column="8" selection-end-line="106" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -88,7 +89,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="586" />
     <option name="y" value="58" />
     <option name="width" value="1196" />
@@ -149,12 +150,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1555433180065</updated>
-      <workItem from="1555433182923" duration="19199000" />
+      <workItem from="1555433182923" duration="19235000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19199000" />
+    <option name="totallyTimeSpent" value="19235000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="391" y="39" width="797" height="575" extended-state="0" />
@@ -221,8 +222,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-663">
-          <caret line="65" column="2" selection-start-line="65" selection-start-column="2" selection-end-line="65" selection-end-column="2" />
+        <state relative-caret-position="26">
+          <caret line="106" column="8" selection-start-line="106" selection-start-column="8" selection-end-line="106" selection-end-column="8" />
         </state>
       </provider>
     </entry>

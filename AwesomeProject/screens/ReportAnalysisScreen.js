@@ -10,23 +10,39 @@ export default class ReportAnalysisScreen extends Component {
     }
 
     componentWillMount() {
-        return fetch('https://localhost:3000/getTweetAnalysis')
-            .then((response) => response.json())
-            .then((responseJson) => {
-                this.setState({
-                    data: responseJson.message
-                })
+
+        const { navigation } = this.props;
+        const tweet = navigation.getParam('tweet');
+        const author = navigation.getParam('author');
+        const reporter = navigation.getParam('reporter');
+
+        fetch('http://10.0.2.2:3000/getTweetAnalysis',{
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                author: author,
+                reporter: reporter,
+                tweet: tweet
             })
+        }).then(res => res.json())
+            .then((response) => {
+            this.setState({
+                result: JSON.stringify(response.message)
+            })
+        })
+            .catch((error) =>{
+                console.error(error);
+            });
     }
 
     render() {
 
-        //JSON.stringify(itemId)
-        //add header
-
         return (
             <View style={styles.container}>
-
+                <Text>Sentiment Result</Text>
                 <Text>{this.state.result}</Text>
                 <Button  style={styles.button}
                          onPress= {() => {

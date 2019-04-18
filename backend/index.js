@@ -104,7 +104,7 @@ const client = new language.LanguageServiceClient({
     keyFilename: './Twitter-Bullying-f40dcb56aa93.json'
 });
 
-app.get('/getTweetAnalysis', async (req, res) => {
+app.post('/getTweetAnalysis', async (req, res) => {
     //return analysis
     //const text = req.body.tweet
     console.log('postB' + JSON.stringify(req.body))

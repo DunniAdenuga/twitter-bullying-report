@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
-import {View, Button, StyleSheet} from 'react-native';
+import {View, Button, Text, StyleSheet} from 'react-native';
 
 
 
 
 export default class HomeScreen extends Component {
     render() {
+
         const { navigation } = this.props;
-        const itemId = navigation.getParam('itemId', 'NO-ID');
-        const otherParam = navigation.getParam('otherParam', 'some default value');
-        //JSON.stringify(itemId)
+        const loginData = navigation.getParam('loginDatum', 'login data should be here')
+        const twitterUserName = loginData.name
+
         return (
             <View style={this.props.style}>
+                <Text>{JSON.stringify(loginData)}</Text>
                 <Button style={styles.button}
                         onPress={() => {
                     this.props.navigation.navigate('NewReport', {
-                        itemId: 86,
-                        otherParam: 'anything you want here',
+                        twitter_user: twitterUserName
                     });
                 }}
                     title="Make New Report">
@@ -25,9 +26,7 @@ export default class HomeScreen extends Component {
                 <Button  style={styles.button}
                          onPress= {() => {
                              this.props.navigation.navigate('ReportList', {
-                                 itemId: 86,
-                                 otherParam: 'anything you want here',
-                                 twitter_user:
+                                 twitter_user: twitterUserName
                              });
                          }}
                          title="See Previous Reports">
